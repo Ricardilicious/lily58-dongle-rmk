@@ -5,7 +5,7 @@
 //! ```text
 //!   LILY58                 42 WPM
 //!   ------------------------------
-//!   [icon]      BASE       [icon]
+//!                BASE
 //!   ------------------------------
 //!   L [################----]  85%
 //!   R [###########---------]  62%
@@ -28,27 +28,6 @@ use rmk::types::battery::{BatteryStatus, ChargeState};
 const W: i32 = 128;
 
 const LAYER_NAMES: [&str; 4] = ["BASE", "LOWER", "RAISE", "ADJUST"];
-
-/// 16x16 layer icons, one `u16` per row, MSB = leftmost pixel.
-/// 0 = BASE (house), 1 = LOWER (down), 2 = RAISE (up), 3 = ADJUST (gear)
-const LAYER_ICONS: [[u16; 16]; 4] = [
-    [
-        0x0000, 0x0180, 0x03C0, 0x0660, 0x0C30, 0x1818, 0x300C, 0x6006, 0xF00F, 0x2004, 0x23C4,
-        0x2244, 0x2244, 0x2244, 0x3FFC, 0x0000,
-    ],
-    [
-        0x0000, 0x0000, 0x300C, 0x1818, 0x0C30, 0x0660, 0x03C0, 0x0180, 0x0000, 0x300C, 0x1818,
-        0x0C30, 0x0660, 0x03C0, 0x0180, 0x0000,
-    ],
-    [
-        0x0000, 0x0180, 0x03C0, 0x0660, 0x0C30, 0x1818, 0x300C, 0x0000, 0x0180, 0x03C0, 0x0660,
-        0x0C30, 0x1818, 0x300C, 0x0000, 0x0000,
-    ],
-    [
-        0x0000, 0x03C0, 0x1248, 0x3A5C, 0x1FF8, 0x1C38, 0x781E, 0x4812, 0x4812, 0x781E, 0x1C38,
-        0x1FF8, 0x3A5C, 0x1248, 0x03C0, 0x0000,
-    ],
-];
 
 #[derive(Default)]
 pub struct DongleRenderer;
@@ -76,11 +55,8 @@ impl DisplayRenderer<BinaryColor> for DongleRenderer {
             .draw(display)
             .ok();
 
-        // Layer: icon on both sides, name in the middle
+        // Layer name in the middle
         let layer = ctx.layer as usize;
-        let icon = &LAYER_ICONS[if layer < LAYER_ICONS.len() { layer } else { 0 }];
-        draw_icon(display, icon, 2, 15);
-        draw_icon(display, icon, W - 18, 15);
         let mut name: heapless::String<8> = heapless::String::new();
         match LAYER_NAMES.get(layer) {
             Some(n) => name.push_str(n).ok(),
@@ -121,18 +97,6 @@ fn draw_text<D: DrawTarget<Color = BinaryColor>>(
     Text::with_text_style(text, Point::new(x, y), style, text_style)
         .draw(display)
         .ok();
-}
-
-fn draw_icon<D: DrawTarget<Color = BinaryColor>>(display: &mut D, icon: &[u16; 16], x: i32, y: i32) {
-    for (row, bits) in icon.iter().enumerate() {
-        for col in 0..16 {
-            if bits & (0x8000 >> col) != 0 {
-                Pixel(Point::new(x + col, y + row as i32), BinaryColor::On)
-                    .draw(display)
-                    .ok();
-            }
-        }
-    }
 }
 
 /// `L [=========     ]  85%`
