@@ -1,0 +1,93 @@
+[package]
+name = "lily58-dongle-rmk"
+version = "0.1.0"
+edition = "2024"
+description = "RMK firmware for a Lily58 Pro (56 keys) with a nice!nano dongle as split central"
+
+# Three firmwares, one per nice!nano
+[[bin]]
+name = "central"     # the dongle (USB to PC, SH1106 OLED, runs the keymap + Vial)
+path = "src/central.rs"
+test = false
+bench = false
+
+[[bin]]
+name = "peripheral"  # left half
+path = "src/peripheral.rs"
+test = false
+bench = false
+
+[[bin]]
+name = "peripheral2" # right half
+path = "src/peripheral2.rs"
+test = false
+bench = false
+
+[dependencies]
+# Default features already include: defmt, storage, vial, host_lock, watchdog
+rmk = { version = "0.9", features = [
+    "nrf52840_ble",
+    "split",
+    "async_matrix",
+    "adafruit_bl",
+    "sh1106",
+] }
+
+embedded-graphics = "0.8"
+heapless = "0.9"
+
+embassy-executor = { version = "0.10", features = [
+    "defmt",
+    "platform-cortex-m",
+    "executor-thread",
+] }
+embassy-nrf = { version = "0.11", features = [
+    "defmt",
+    "nrf52840",
+    "time-driver-rtc1",
+    "gpiote",
+    "unstable-pac",
+    "nfc-pins-as-gpio",
+    "time",
+] }
+embassy-time = { version = "0.5", features = ["tick-hz-32_768", "defmt", "defmt-timestamp-uptime"] }
+nrf-mpsl = { version = "0.4.0", features = [
+    "defmt",
+    "critical-section-impl",
+    "nrf52840",
+] }
+nrf-sdc = { version = "0.4.0", features = [
+    "defmt",
+    "peripheral",
+    "central",
+    "nrf52840",
+] }
+bt-hci = { version = "0.10", features = ["defmt"] }
+
+cortex-m = "0.7.7"
+cortex-m-rt = "0.7.5"
+defmt = "1"
+defmt-rtt = "1"
+panic-probe = { version = "1", features = ["print-defmt"] }
+static_cell = "2"
+
+[build-dependencies]
+# Used by build.rs to embed vial.json into the firmware
+const-gen = "1.6"
+json = "0.12"
+xz2 = "0.1.7"
+
+[profile.dev]
+codegen-units = 1
+debug = true
+opt-level = 1
+overflow-checks = true
+lto = false
+panic = "unwind"
+
+[profile.release]
+codegen-units = 1
+debug = true          # no size cost on bare metal
+opt-level = "z"       # optimize for size
+overflow-checks = false
+lto = "fat"
