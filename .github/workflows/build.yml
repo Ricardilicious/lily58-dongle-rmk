@@ -15,6 +15,10 @@ jobs:
       - name: Install Rust toolchain
         run: rustup show
 
+      # p256-cortex-m4-sys (BLE pairing crypto) compiles C code for the nRF52840
+      - name: Install ARM GCC
+        run: sudo apt-get update && sudo apt-get install -y gcc-arm-none-eabi
+
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
 
