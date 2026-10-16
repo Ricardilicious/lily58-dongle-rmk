@@ -11,7 +11,9 @@
 //!   R [###########---------]  62%
 //! ```
 //!
-//! The screen is blanked while the keyboard sleeps to avoid OLED burn-in.
+//! For the first few seconds after the dongle is plugged in, a startup screen
+//! with the keyboard name is shown instead. The screen is blanked while the
+//! keyboard sleeps to avoid OLED burn-in.
 
 use core::fmt::Write as _;
 
@@ -21,27 +23,41 @@ use embedded_graphics::pixelcolor::BinaryColor;
 use embedded_graphics::prelude::*;
 use embedded_graphics::primitives::{Line, PrimitiveStyle, Rectangle, RoundedRectangle};
 use embedded_graphics::text::{Alignment, Baseline, Text, TextStyleBuilder};
+use embassy_time::{Duration, Instant};
 use rmk::display::{DisplayRenderer, RenderContext};
 use rmk::event::BatteryStatusEvent;
 use rmk::types::battery::{BatteryStatus, ChargeState};
 
 const W: i32 = 128;
 
+/// How long the startup screen stays up after the dongle is plugged in
+const SPLASH_TIME: Duration = Duration::from_secs(3);
+
 const LAYER_NAMES: [&str; 4] = ["BASE", "LOWER", "RAISE", "ADJUST"];
 
 #[derive(Default)]
-pub struct DongleRenderer;
+pub struct DongleRenderer {
+    /// Time of the first render, i.e. when the dongle started
+    started: Option<Instant>,
+}
 
 impl DisplayRenderer<BinaryColor> for DongleRenderer {
     fn render<D: DrawTarget<Color = BinaryColor>>(&mut self, ctx: &RenderContext, display: &mut D) {
         display.clear(BinaryColor::Off).ok();
-        if ctx.sleeping {
-            return;
-        }
 
         let small = MonoTextStyle::new(&FONT_6X10, BinaryColor::On);
         let big = MonoTextStyle::new(&FONT_10X20, BinaryColor::On);
         let line = PrimitiveStyle::with_stroke(BinaryColor::On, 1);
+
+        let started = *self.started.get_or_insert_with(Instant::now);
+        if started.elapsed() < SPLASH_TIME {
+            draw_splash(display, small, big, line);
+            return;
+        }
+
+        if ctx.sleeping {
+            return;
+        }
 
         // Header: name (or CAPS) on the left, WPM on the right
         let title = if ctx.caps_lock { "CAPS" } else { "LILY58" };
@@ -80,6 +96,38 @@ impl DisplayRenderer<BinaryColor> for DongleRenderer {
             draw_battery_row(display, label, connected, battery, 40 + i as i32 * 13);
         }
     }
+}
+
+/// Startup screen:
+///
+/// ```text
+///   +----------------------------+
+///   |           LILY58           |
+///   |       ----------------     |
+///   |        PRO WIRELESS        |
+///   |         RMK + VIAL         |
+///   +----------------------------+
+/// ```
+fn draw_splash<D: DrawTarget<Color = BinaryColor>>(
+    display: &mut D,
+    small: MonoTextStyle<'_, BinaryColor>,
+    big: MonoTextStyle<'_, BinaryColor>,
+    line: PrimitiveStyle<BinaryColor>,
+) {
+    RoundedRectangle::with_equal_corners(
+        Rectangle::new(Point::new(0, 0), Size::new(W as u32, 64)),
+        Size::new(6, 6),
+    )
+    .into_styled(line)
+    .draw(display)
+    .ok();
+    draw_text(display, "LILY58", W / 2, 8, big, Alignment::Center);
+    Line::new(Point::new(24, 31), Point::new(W - 25, 31))
+        .into_styled(line)
+        .draw(display)
+        .ok();
+    draw_text(display, "PRO WIRELESS", W / 2, 36, small, Alignment::Center);
+    draw_text(display, "RMK + VIAL", W / 2, 49, small, Alignment::Center);
 }
 
 fn draw_text<D: DrawTarget<Color = BinaryColor>>(
