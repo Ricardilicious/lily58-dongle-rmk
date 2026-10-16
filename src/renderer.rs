@@ -11,8 +11,8 @@
 //!   R [###########---------]  62%
 //! ```
 //!
-//! For the first few seconds after the dongle is plugged in, a startup screen
-//! with the keyboard name is shown instead. The screen is blanked while the
+//! For the first few seconds after the dongle is plugged in, a "RIC CUSTOM"
+//! startup screen is shown instead. The screen is blanked while the
 //! keyboard sleeps to avoid OLED burn-in.
 
 use core::fmt::Write as _;
@@ -51,7 +51,7 @@ impl DisplayRenderer<BinaryColor> for DongleRenderer {
 
         let started = *self.started.get_or_insert_with(Instant::now);
         if started.elapsed() < SPLASH_TIME {
-            draw_splash(display, small, big, line);
+            draw_splash(display, big, line);
             return;
         }
 
@@ -98,19 +98,9 @@ impl DisplayRenderer<BinaryColor> for DongleRenderer {
     }
 }
 
-/// Startup screen:
-///
-/// ```text
-///   +----------------------------+
-///   |           LILY58           |
-///   |       ----------------     |
-///   |        PRO WIRELESS        |
-///   |         RMK + VIAL         |
-///   +----------------------------+
-/// ```
+/// Startup screen: "RIC CUSTOM" in a frame.
 fn draw_splash<D: DrawTarget<Color = BinaryColor>>(
     display: &mut D,
-    small: MonoTextStyle<'_, BinaryColor>,
     big: MonoTextStyle<'_, BinaryColor>,
     line: PrimitiveStyle<BinaryColor>,
 ) {
@@ -121,13 +111,7 @@ fn draw_splash<D: DrawTarget<Color = BinaryColor>>(
     .into_styled(line)
     .draw(display)
     .ok();
-    draw_text(display, "LILY58", W / 2, 8, big, Alignment::Center);
-    Line::new(Point::new(24, 31), Point::new(W - 25, 31))
-        .into_styled(line)
-        .draw(display)
-        .ok();
-    draw_text(display, "PRO WIRELESS", W / 2, 36, small, Alignment::Center);
-    draw_text(display, "RMK + VIAL", W / 2, 49, small, Alignment::Center);
+    draw_text(display, "RIC CUSTOM", W / 2, 22, big, Alignment::Center);
 }
 
 fn draw_text<D: DrawTarget<Color = BinaryColor>>(
