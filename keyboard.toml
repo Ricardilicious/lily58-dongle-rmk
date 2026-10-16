@@ -127,6 +127,8 @@ size = "128x64"
 rotation = 0
 renderer = "crate::renderer::DongleRenderer"
 min_render_interval = 50
+# Redraw at least every 0.5 s so the startup screen goes away on its own
+render_interval = 500
 [split.central.display.protocol.i2c]
 instance = "TWISPI0"
 sda = "P0_17"
