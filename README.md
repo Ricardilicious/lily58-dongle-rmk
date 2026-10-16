@@ -1,4 +1,4 @@
-# Lily58 Pro + nice!nano dongle (RMK + Vial)
+# Lily58 Pro Wireless (nice!nano dongle, RMK + Vial)
 
 - **Dongle** (3rd nice!nano + 1.3" SH1106 OLED) = split central. It runs the keymap and Vial, and plugs into the PC over USB.
 - **Left / right halves** = peripherals, connected to the dongle over BLE.
