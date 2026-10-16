@@ -1,0 +1,56 @@
+name: Build firmware
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # Reads rust-toolchain.toml (stable + thumbv7em-none-eabihf + llvm-tools)
+      - name: Install Rust toolchain
+        run: rustup show
+
+      - name: Cache cargo
+        uses: Swatinem/rust-cache@v2
+
+      - name: Install flip-link, cargo-binutils, cargo-hex-to-uf2
+        uses: taiki-e/install-action@v2
+        with:
+          tool: flip-link,cargo-binutils,cargo-hex-to-uf2
+
+      - name: Build normal firmware
+        run: |
+          set -e
+          mkdir -p out
+          build() {  # $1 = cargo bin, $2 = output name
+            cargo objcopy --release --bin "$1" -- -O ihex "$2.hex"
+            cargo hex-to-uf2 --input-path "$2.hex" --output-path "out/$2.uf2" --family nrf52840
+          }
+          build central     lily58_dongle
+          build peripheral  lily58_left
+          build peripheral2 lily58_right
+
+      - name: Build settings-reset firmware
+        run: |
+          set -e
+          sed -i 's/^clear_storage = false/clear_storage = true/' keyboard.toml
+          grep -q '^clear_storage = true' keyboard.toml
+          build() {
+            cargo objcopy --release --bin "$1" -- -O ihex "$2.hex"
+            cargo hex-to-uf2 --input-path "$2.hex" --output-path "out/$2.uf2" --family nrf52840
+          }
+          build central     lily58_dongle_reset
+          build peripheral  lily58_left_reset
+          build peripheral2 lily58_right_reset
+          git checkout keyboard.toml
+
+      - name: Upload firmware
+        uses: actions/upload-artifact@v4
+        with:
+          name: firmware
+          path: out/*.uf2
