@@ -1,0 +1,167 @@
+# Lily58 Pro (56 keys: the inner key under each nice!nano is not used)
+# Dongle (nice!nano #3 + 1.3" SH1106 OLED) = split central, runs the keymap and Vial
+# Left / right halves (nice!nano) = peripherals, talk to the dongle over BLE
+
+[keyboard]
+name = "Lily58 Dongle"
+product_name = "Lily58 Dongle"
+vendor_id = 0x4c4b
+product_id = 0x4643
+manufacturer = "Ricardilicious"
+# Not `board = "nice!nano_v2"`: that default enables a battery ADC on every board,
+# but the dongle has no battery. Each half sets its own battery_adc_pin below.
+chip = "nrf52840"
+usb_enable = true
+
+[chip.nrf52840]
+# nice!nano v2 has the DCDC inductors fitted; the generic nrf52840 default turns them off
+dcdc_reg0 = true
+dcdc_reg1 = true
+
+[rmk]
+# After 10 minutes without a key press the dongle tells the halves to use slow
+# connection intervals (saves their batteries) and blanks the OLED. Any key wakes it.
+split_central_sleep_timeout_seconds = 600
+
+# Unified matrix: 5 rows x 12 cols. Left half = cols 0-5, right half = cols 6-11.
+# Right half col 6 is the INNER column. (4,0), (4,5), (4,6), (4,11) have no switch.
+[layout]
+rows = 5
+cols = 12
+map = """
+(0,0) (0,1) (0,2) (0,3) (0,4) (0,5)    (0,6) (0,7) (0,8) (0,9) (0,10) (0,11)
+(1,0) (1,1) (1,2) (1,3) (1,4) (1,5)    (1,6) (1,7) (1,8) (1,9) (1,10) (1,11)
+(2,0) (2,1) (2,2) (2,3) (2,4) (2,5)    (2,6) (2,7) (2,8) (2,9) (2,10) (2,11)
+(3,0) (3,1) (3,2) (3,3) (3,4) (3,5)    (3,6) (3,7) (3,8) (3,9) (3,10) (3,11)
+            (4,1) (4,2) (4,3) (4,4)    (4,7) (4,8) (4,9) (4,10)
+"""
+
+[keymap]
+layers = 4
+
+# Ported from the ZMK keymap. Hold Lower + Raise = Adjust (tri-layer below).
+[[keymap.layer]]
+name = "base"
+keys = """
+Escape  Kc1  Kc2  Kc3  Kc4    Kc5          Kc6    Kc7    Kc8        Kc9   Kc0        Grave
+Tab     Q    W    E    R      T            Y      U      I          O     P          Minus
+LCtrl   A    S    D    F      G            H      J      K          L     Semicolon  Quote
+LShift  Z    X    C    V      B            N      M      Comma      Dot   Slash      RShift
+             LAlt LGui MO(1)  Space        Enter  MO(2)  Backspace  RGui
+"""
+
+[[keymap.layer]]
+name = "lower"
+keys = """
+_      _               _               _               _               _                  _                _                 _                 _                       _                        _
+F1     F2              F3              F4              F5              F6                 F7               F8                F9                F10                     F11                      F12
+Grave  WM(Kc1,LShift)  WM(Kc2,LShift)  WM(Kc3,LShift)  WM(Kc4,LShift)  WM(Kc5,LShift)     WM(Kc6,LShift)   WM(Kc7,LShift)    WM(Kc8,LShift)    WM(Kc9,LShift)          WM(Kc0,LShift)           WM(Grave,LShift)
+_      _               _               _               _               _                  _                WM(Minus,LShift)  WM(Equal,LShift)  WM(LeftBracket,LShift)  WM(RightBracket,LShift)  WM(Backslash,LShift)
+                       _               _               _               _                  _                _                 _                 _
+"""
+
+[[keymap.layer]]
+name = "raise"
+keys = """
+_      _    _    _    _    _          _                 _      _      _            _             _
+Grave  Kc1  Kc2  Kc3  Kc4  Kc5        Kc6               Kc7    Kc8    Kc9          Kc0           _
+_      _    _    _    _    _          Left              Down   Up     Right        _             _
+_      _    _    _    _    _          WM(Equal,LShift)  Minus  Equal  LeftBracket  RightBracket  Backslash
+            _    _    _    _          _                 _      _      _
+"""
+
+# Adjust:
+#   both top corners      -> DONGLE into bootloader (UF2 drive appears)
+#   key below each corner -> reboot the dongle
+#   left end of 3rd row   -> hold 5 s to forget the paired halves (re-pair them)
+# Halves into bootloader: hold their top OUTER corner key while switching them on
+# (see `bootmagic` below) - no need to open the case.
+[[keymap.layer]]
+name = "adjust"
+keys = """
+Bootloader  _  _  _  _  _        _  _  _  _  _  Bootloader
+Reboot      _  _  _  _  _        _  _  _  _  _  Reboot
+User7       _  _  _  _  _        _  _  _  _  _  _
+_           _  _  _  _  _        _  _  _  _  _  _
+               _  _  _  _        _  _  _  _
+"""
+
+[behavior.tri_layer]
+lower = 1
+upper = 2
+adjust = 3
+
+[host]
+vial_enabled = true
+rynk_enabled = false
+# No unlock combo needed in Vial (same as ZMK Studio with locking off)
+insecure = true
+
+[ble]
+enabled = true
+
+[storage]
+enabled = true
+# CI flips this to true for the *_reset.uf2 files
+clear_storage = false
+
+[split]
+connection = "ble"
+
+# --- Dongle: no keys, just the OLED ---
+[split.central]
+rows = 0
+cols = 0
+row_offset = 0
+col_offset = 0
+[split.central.matrix]
+matrix_type = "normal"
+row_pins = []
+col_pins = []
+
+# 1.3" 128x64 SH1106, same wiring as the ZMK build:
+# GND->GND, VCC->VCC, SDA->D2 (P0.17), SCL->D3 (P0.20)
+[split.central.display]
+driver = "sh1106"
+size = "128x64"
+rotation = 0
+renderer = "crate::renderer::DongleRenderer"
+min_render_interval = 50
+[split.central.display.protocol.i2c]
+instance = "TWISPI0"
+sda = "P0_17"
+scl = "P0_20"
+address = 0x3C
+
+# --- Left half (peripheral id 0) ---
+[[split.peripheral]]
+rows = 5
+cols = 6
+row_offset = 0
+col_offset = 0
+battery_adc_pin = "vddh"
+battery_user_description = "Left"
+[split.peripheral.matrix]
+matrix_type = "normal"
+# pro_micro pins 5,6,7,8,9
+row_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
+# pro_micro pins 19,18,15,14,16,10 (outer -> inner)
+col_pins = ["P0_02", "P1_15", "P1_13", "P1_11", "P0_10", "P0_09"]
+# Hold Esc (top-left) while powering on -> bootloader
+bootmagic = [0, 0]
+
+# --- Right half (peripheral id 1) ---
+[[split.peripheral]]
+rows = 5
+cols = 6
+row_offset = 0
+col_offset = 6
+battery_adc_pin = "vddh"
+battery_user_description = "Right"
+[split.peripheral.matrix]
+matrix_type = "normal"
+row_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
+# pro_micro pins 10,16,14,15,18,19 (inner -> outer)
+col_pins = ["P0_09", "P0_10", "P1_11", "P1_13", "P1_15", "P0_02"]
+# Hold ` (top-right) while powering on -> bootloader
+bootmagic = [0, 5]
