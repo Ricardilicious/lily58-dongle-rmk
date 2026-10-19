@@ -1,8 +1,7 @@
-//! Dongle firmware: split central with no keys, USB to the PC, OLED status screen.
+//! Left half firmware: split central. Runs the keymap and Vial, and talks to
+//! the PC through the dongle, over Bluetooth, or over USB.
 #![no_main]
 #![no_std]
-
-pub mod renderer;
 
 use rmk::macros::rmk_central;
 
