@@ -7,7 +7,8 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest moved to Ubuntu 26, where bindgen fails on nrf-mpsl-sys
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
 
@@ -17,7 +18,7 @@ jobs:
 
       # p256-cortex-m4-sys (BLE pairing crypto) compiles C code for the nRF52840
       - name: Install ARM GCC
-        run: sudo apt-get update && sudo apt-get install -y gcc-arm-none-eabi
+        run: sudo apt-get update && sudo apt-get install -y gcc-arm-none-eabi libnewlib-arm-none-eabi
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
