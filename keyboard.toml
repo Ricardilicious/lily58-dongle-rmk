@@ -100,14 +100,12 @@ lower = 1
 upper = 2
 adjust = 3
 
-# Home-row mod timing: a key counts as held after 200 ms, or as soon as another
-# key is pressed and released while it's down. Flow tap: typing fast (another
-# key within 150 ms before) always gives the letter.
+# Home-row mod timing, copied from the old Vial settings (HRM July 18 2026.vil):
+# tapping term 155 ms, permissive hold off, "ignore mod-tap interrupt" on.
+# So a home-row key is a modifier only when held longer than 155 ms.
 [behavior.morse]
-enable_flow_tap = true
-prior_idle_time = "150ms"
-hold_timeout = "200ms"
-permissive_hold = true
+hold_timeout = "155ms"
+normal_mode = true
 
 [host]
 vial_enabled = true
