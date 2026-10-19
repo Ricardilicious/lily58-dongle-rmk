@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1002 1638" width="1002" height="1638" font-family="DejaVu Sans,Verdana,Arial,sans-serif">
+<!-- Lily58 Pro Wireless keymap, drawn from keyboard.toml (tri-mode branch) -->
+<style>.k{fill:#2b2f36;stroke:#3d434c}.m{fill:#1f4e79;stroke:#3d434c}.l{fill:#5a3e85;stroke:#3d434c}.s{fill:#7a4a12;stroke:#3d434c}.t{fill:#1c1f24;stroke:#2a2e35}text{fill:#f2f2f2;font-weight:bold;text-anchor:middle}.u{fill:#bcd3ea;font-weight:normal;font-size:10px}.h{text-anchor:start;font-size:22px}</style>
+<rect width="1002" height="1638" fill="#14161a"/>
+<defs><rect id="e" x="-26" y="-26" width="52" height="52" rx="7" class="t"/><rect id="E" x="-26" y="-40.5" width="52" height="81" rx="7" class="t"/></defs>
+<text x="20" y="40" class="h">Lily58 Pro Wireless — tri-mode keymap</text>
+<text x="520" y="36" class="u" style="text-anchor:start">blue = tap / hold (home-row mod)   purple = layer   orange = system   blank = falls through</text>
+<text x="20" y="92" class="h">Layer 0 · BASE</text>
+<g transform="translate(49,168)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">`</text></g>
+<g transform="translate(107,160.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F1</text></g>
+<g transform="translate(165,146)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F2</text></g>
+<g transform="translate(223,139)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F3</text></g>
+<g transform="translate(281,146)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F4</text></g>
+<g transform="translate(339,153.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F5</text></g>
+<g transform="translate(658,153.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F6</text></g>
+<g transform="translate(716,146)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F7</text></g>
+<g transform="translate(774,139)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F8</text></g>
+<g transform="translate(832,146)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F9</text></g>
+<g transform="translate(890,160.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F10</text></g>
+<g transform="translate(948,168)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">=</text></g>
+<g transform="translate(49,226)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Tab</text></g>
+<g transform="translate(107,218.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Q</text></g>
+<g transform="translate(165,204)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">W</text></g>
+<g transform="translate(223,197)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">E</text></g>
+<g transform="translate(281,204)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">R</text></g>
+<g transform="translate(339,211.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">T</text></g>
+<g transform="translate(658,211.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Y</text></g>
+<g transform="translate(716,204)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">U</text></g>
+<g transform="translate(774,197)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">I</text></g>
+<g transform="translate(832,204)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">O</text></g>
+<g transform="translate(890,218.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">P</text></g>
+<g transform="translate(948,226)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">-</text></g>
+<g transform="translate(49,284)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="2.5" font-size="12">Shift</text></g>
+<g transform="translate(107,276.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="m"/><text y="-2" font-size="15">A</text><text y="11" class="u">hold Ctrl</text></g>
+<g transform="translate(165,262)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="m"/><text y="-2" font-size="15">S</text><text y="11" class="u">hold Alt</text></g>
+<g transform="translate(223,255)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="m"/><text y="-2" font-size="15">D</text><text y="11" class="u">hold Gui</text></g>
+<g transform="translate(281,262)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">F</text></g>
+<g transform="translate(339,269.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">G</text></g>
+<g transform="translate(658,269.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">H</text></g>
+<g transform="translate(716,262)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">J</text></g>
+<g transform="translate(774,255)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="m"/><text y="-2" font-size="15">K</text><text y="11" class="u">hold Gui</text></g>
+<g transform="translate(832,262)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="m"/><text y="-2" font-size="15">L</text><text y="11" class="u">hold Alt</text></g>
+<g transform="translate(890,276.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="m"/><text y="-2" font-size="15">;</text><text y="11" class="u">hold Ctrl</text></g>
+<g transform="translate(948,284)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">'</text></g>
+<g transform="translate(49,342)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Esc</text></g>
+<g transform="translate(107,334.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Z</text></g>
+<g transform="translate(165,320)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">X</text></g>
+<g transform="translate(223,313)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">C</text></g>
+<g transform="translate(281,320)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">V</text></g>
+<g transform="translate(339,327.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">B</text></g>
+<g transform="translate(658,327.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">N</text></g>
+<g transform="translate(716,320)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">M</text></g>
+<g transform="translate(774,313)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">,</text></g>
+<g transform="translate(832,320)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">.</text></g>
+<g transform="translate(890,334.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">/</text></g>
+<g transform="translate(948,342)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="2.5" font-size="12">Shift</text></g>
+<g transform="translate(194,378)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Alt</text></g>
+<g transform="translate(252,379.7)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="l"/><text y="-2" font-size="15">NUM</text><text y="11" class="u">hold</text></g>
+<g transform="translate(310,385.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="2.5" font-size="12">Space</text></g>
+<g transform="translate(382.5,385.5) rotate(30) translate(0,0)"><rect x="-26" y="-40.5" width="52" height="81" rx="7" class="k"/><text y="4" font-size="15">Gui</text></g>
+<g transform="translate(614.5,385.5) rotate(-30) translate(0,0)"><rect x="-26" y="-40.5" width="52" height="81" rx="7" class="k"/><text y="2.5" font-size="12">Enter</text></g>
+<g transform="translate(687,385.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Bksp</text></g>
+<g transform="translate(745,379.7)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="l"/><text y="-2" font-size="15">NAV</text><text y="11" class="u">hold</text></g>
+<g transform="translate(803,379.7)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Caps</text></g>
+<text x="20" y="484" class="h">Layer 1 · NUMBERS (hold NUM)</text>
+<g transform="translate(49,560)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Bri-</text></g>
+<g transform="translate(107,552.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Bri+</text></g>
+<use href="#e" transform="translate(165,538)"/>
+<use href="#e" transform="translate(223,531)"/>
+<use href="#e" transform="translate(281,538)"/>
+<use href="#e" transform="translate(339,545.5)"/>
+<g transform="translate(658,545.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Prev</text></g>
+<g transform="translate(716,538)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Play</text></g>
+<g transform="translate(774,531)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Next</text></g>
+<g transform="translate(832,538)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Mute</text></g>
+<g transform="translate(890,552.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Vol-</text></g>
+<g transform="translate(948,560)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Vol+</text></g>
+<use href="#e" transform="translate(49,618)"/>
+<g transform="translate(107,610.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">!</text></g>
+<g transform="translate(165,596)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">@</text></g>
+<g transform="translate(223,589)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">#</text></g>
+<g transform="translate(281,596)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">$</text></g>
+<g transform="translate(339,603.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">%</text></g>
+<g transform="translate(658,603.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">^</text></g>
+<g transform="translate(716,596)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">&amp;</text></g>
+<g transform="translate(774,589)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">*</text></g>
+<g transform="translate(832,596)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">(</text></g>
+<g transform="translate(890,610.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">)</text></g>
+<g transform="translate(948,618)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Del</text></g>
+<use href="#e" transform="translate(49,676)"/>
+<g transform="translate(107,668.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">1</text></g>
+<g transform="translate(165,654)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">2</text></g>
+<g transform="translate(223,647)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">3</text></g>
+<g transform="translate(281,654)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">4</text></g>
+<g transform="translate(339,661.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">5</text></g>
+<g transform="translate(658,661.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">6</text></g>
+<g transform="translate(716,654)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">7</text></g>
+<g transform="translate(774,647)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">8</text></g>
+<g transform="translate(832,654)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">9</text></g>
+<g transform="translate(890,668.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">0</text></g>
+<use href="#e" transform="translate(948,676)"/>
+<use href="#e" transform="translate(49,734)"/>
+<use href="#e" transform="translate(107,726.5)"/>
+<use href="#e" transform="translate(165,712)"/>
+<use href="#e" transform="translate(223,705)"/>
+<use href="#e" transform="translate(281,712)"/>
+<use href="#e" transform="translate(339,719.5)"/>
+<use href="#e" transform="translate(658,719.5)"/>
+<use href="#e" transform="translate(716,712)"/>
+<use href="#e" transform="translate(774,705)"/>
+<use href="#e" transform="translate(832,712)"/>
+<g transform="translate(890,726.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">\</text></g>
+<g transform="translate(948,734)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">|</text></g>
+<use href="#e" transform="translate(194,770)"/>
+<use href="#e" transform="translate(252,771.7)"/>
+<use href="#e" transform="translate(310,777.5)"/>
+<use href="#E" transform="translate(382.5,777.5) rotate(30) translate(0,0)"/>
+<use href="#E" transform="translate(614.5,777.5) rotate(-30) translate(0,0)"/>
+<use href="#e" transform="translate(687,777.5)"/>
+<use href="#e" transform="translate(745,771.7)"/>
+<use href="#e" transform="translate(803,771.7)"/>
+<text x="20" y="876" class="h">Layer 2 · NAV (hold NAV)</text>
+<use href="#e" transform="translate(49,952)"/>
+<use href="#e" transform="translate(107,944.5)"/>
+<use href="#e" transform="translate(165,930)"/>
+<use href="#e" transform="translate(223,923)"/>
+<use href="#e" transform="translate(281,930)"/>
+<use href="#e" transform="translate(339,937.5)"/>
+<use href="#e" transform="translate(658,937.5)"/>
+<use href="#e" transform="translate(716,930)"/>
+<use href="#e" transform="translate(774,923)"/>
+<use href="#e" transform="translate(832,930)"/>
+<use href="#e" transform="translate(890,944.5)"/>
+<use href="#e" transform="translate(948,952)"/>
+<use href="#e" transform="translate(49,1010)"/>
+<use href="#e" transform="translate(107,1002.5)"/>
+<use href="#e" transform="translate(165,988)"/>
+<use href="#e" transform="translate(223,981)"/>
+<use href="#e" transform="translate(281,988)"/>
+<use href="#e" transform="translate(339,995.5)"/>
+<g transform="translate(658,995.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Ms ←</text></g>
+<g transform="translate(716,988)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Ms ↓</text></g>
+<g transform="translate(774,981)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Ms ↑</text></g>
+<g transform="translate(832,988)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">Ms →</text></g>
+<use href="#e" transform="translate(890,1002.5)"/>
+<use href="#e" transform="translate(948,1010)"/>
+<use href="#e" transform="translate(49,1068)"/>
+<use href="#e" transform="translate(107,1060.5)"/>
+<use href="#e" transform="translate(165,1046)"/>
+<use href="#e" transform="translate(223,1039)"/>
+<use href="#e" transform="translate(281,1046)"/>
+<use href="#e" transform="translate(339,1053.5)"/>
+<g transform="translate(658,1053.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">←</text></g>
+<g transform="translate(716,1046)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">↓</text></g>
+<g transform="translate(774,1039)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">↑</text></g>
+<g transform="translate(832,1046)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="4" font-size="15">→</text></g>
+<use href="#e" transform="translate(890,1060.5)"/>
+<use href="#e" transform="translate(948,1068)"/>
+<use href="#e" transform="translate(49,1126)"/>
+<use href="#e" transform="translate(107,1118.5)"/>
+<use href="#e" transform="translate(165,1104)"/>
+<g transform="translate(223,1097)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="2.5" font-size="12">Gui+C</text></g>
+<g transform="translate(281,1104)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="k"/><text y="2.5" font-size="12">Gui+V</text></g>
+<use href="#e" transform="translate(339,1111.5)"/>
+<use href="#e" transform="translate(658,1111.5)"/>
+<use href="#e" transform="translate(716,1104)"/>
+<use href="#e" transform="translate(774,1097)"/>
+<use href="#e" transform="translate(832,1104)"/>
+<use href="#e" transform="translate(890,1118.5)"/>
+<use href="#e" transform="translate(948,1126)"/>
+<use href="#e" transform="translate(194,1162)"/>
+<use href="#e" transform="translate(252,1163.7)"/>
+<use href="#e" transform="translate(310,1169.5)"/>
+<use href="#E" transform="translate(382.5,1169.5) rotate(30) translate(0,0)"/>
+<use href="#E" transform="translate(614.5,1169.5) rotate(-30) translate(0,0)"/>
+<use href="#e" transform="translate(687,1169.5)"/>
+<use href="#e" transform="translate(745,1163.7)"/>
+<use href="#e" transform="translate(803,1163.7)"/>
+<text x="20" y="1268" class="h">Layer 3 · ADJUST (hold NUM + NAV)</text>
+<g transform="translate(49,1344)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="s"/><text y="4" font-size="15">Boot</text></g>
+<g transform="translate(107,1336.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="s"/><text y="4" font-size="15">BT1</text></g>
+<g transform="translate(165,1322)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="s"/><text y="4" font-size="15">BT2</text></g>
+<g transform="translate(223,1315)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="s"/><text y="4" font-size="15">BT3</text></g>
+<g transform="translate(281,1322)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="s"/><text y="1.5" font-size="10">Dongle</text></g>
+<g transform="translate(339,1329.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="s"/><text y="-5" font-size="15">USB/</text><text y="13" font-size="15">BLE</text></g>
+<use href="#e" transform="translate(658,1329.5)"/>
+<use href="#e" transform="translate(716,1322)"/>
+<use href="#e" transform="translate(774,1315)"/>
+<use href="#e" transform="translate(832,1322)"/>
+<use href="#e" transform="translate(890,1336.5)"/>
+<use href="#e" transform="translate(948,1344)"/>
+<g transform="translate(49,1402)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="s"/><text y="2.5" font-size="12">Reset</text></g>
+<use href="#e" transform="translate(107,1394.5)"/>
+<use href="#e" transform="translate(165,1380)"/>
+<use href="#e" transform="translate(223,1373)"/>
+<use href="#e" transform="translate(281,1380)"/>
+<use href="#e" transform="translate(339,1387.5)"/>
+<use href="#e" transform="translate(658,1387.5)"/>
+<use href="#e" transform="translate(716,1380)"/>
+<use href="#e" transform="translate(774,1373)"/>
+<use href="#e" transform="translate(832,1380)"/>
+<use href="#e" transform="translate(890,1394.5)"/>
+<use href="#e" transform="translate(948,1402)"/>
+<g transform="translate(49,1460)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="s"/><text y="1.5" font-size="10">Clr BT</text></g>
+<g transform="translate(107,1452.5)"><rect x="-26" y="-26" width="52" height="52" rx="7" class="s"/><text y="-5" font-size="10">Clr</text><text y="8" font-size="10">R half</text></g>
+<use href="#e" transform="translate(165,1438)"/>
+<use href="#e" transform="translate(223,1431)"/>
+<use href="#e" transform="translate(281,1438)"/>
+<use href="#e" transform="translate(339,1445.5)"/>
+<use href="#e" transform="translate(658,1445.5)"/>
+<use href="#e" transform="translate(716,1438)"/>
+<use href="#e" transform="translate(774,1431)"/>
+<use href="#e" transform="translate(832,1438)"/>
+<use href="#e" transform="translate(890,1452.5)"/>
+<use href="#e" transform="translate(948,1460)"/>
+<use href="#e" transform="translate(49,1518)"/>
+<use href="#e" transform="translate(107,1510.5)"/>
+<use href="#e" transform="translate(165,1496)"/>
+<use href="#e" transform="translate(223,1489)"/>
+<use href="#e" transform="translate(281,1496)"/>
+<use href="#e" transform="translate(339,1503.5)"/>
+<use href="#e" transform="translate(658,1503.5)"/>
+<use href="#e" transform="translate(716,1496)"/>
+<use href="#e" transform="translate(774,1489)"/>
+<use href="#e" transform="translate(832,1496)"/>
+<use href="#e" transform="translate(890,1510.5)"/>
+<use href="#e" transform="translate(948,1518)"/>
+<use href="#e" transform="translate(194,1554)"/>
+<use href="#e" transform="translate(252,1555.7)"/>
+<use href="#e" transform="translate(310,1561.5)"/>
+<use href="#E" transform="translate(382.5,1561.5) rotate(30) translate(0,0)"/>
+<use href="#E" transform="translate(614.5,1561.5) rotate(-30) translate(0,0)"/>
+<use href="#e" transform="translate(687,1561.5)"/>
+<use href="#e" transform="translate(745,1555.7)"/>
+<use href="#e" transform="translate(803,1555.7)"/>
+</svg>
