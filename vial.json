@@ -12,7 +12,8 @@
     {"name": "PREV_BT", "title": "Switch to the previous Bluetooth channel", "shortName": "Prev\nBT"},
     {"name": "CLR_BT", "title": "Clear bond info for current channel", "shortName": "Clear\nBT"},
     {"name": "SWITCH", "title": "Switch default output mode between USB/BLE", "shortName": "Switch\nOutput"},
-    {"name": "CLR_PEER", "title": "Forget the current bonded split peer(central or peripheral)", "shortName": "Clear\nPeer"}
+    {"name": "CLR_PEER", "title": "Forget the current bonded split peer(central or peripheral)", "shortName": "Clear\nPeer"},
+    {"name": "DONGLE", "title": "Use the dongle (hold 5 s to pair a new dongle)", "shortName": "Dongle"}
   ],
   "layouts": {
     "keymap": [
