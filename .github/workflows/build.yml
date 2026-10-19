@@ -21,13 +21,17 @@ jobs:
 
       - name: Cache cargo
         uses: Swatinem/rust-cache@v2
+        with:
+          workspaces: |
+            . -> target
+            dongle -> target
 
       - name: Install flip-link, cargo-binutils, cargo-hex-to-uf2
         uses: taiki-e/install-action@v2
         with:
           tool: flip-link,cargo-binutils,cargo-hex-to-uf2
 
-      - name: Build normal firmware
+      - name: Build halves
         run: |
           set -e
           mkdir -p out
@@ -35,11 +39,10 @@ jobs:
             cargo objcopy --release --bin "$1" -- -O ihex "$2.hex"
             cargo hex-to-uf2 --input-path "$2.hex" --output-path "out/$2.uf2" --family nrf52840
           }
-          build central     lily58_dongle
-          build peripheral  lily58_left
-          build peripheral2 lily58_right
+          build central    lily58_left
+          build peripheral lily58_right
 
-      - name: Build settings-reset firmware
+      - name: Build halves (settings reset)
         run: |
           set -e
           sed -i 's/^clear_storage = false/clear_storage = true/' keyboard.toml
@@ -48,10 +51,20 @@ jobs:
             cargo objcopy --release --bin "$1" -- -O ihex "$2.hex"
             cargo hex-to-uf2 --input-path "$2.hex" --output-path "out/$2.uf2" --family nrf52840
           }
-          build central     lily58_dongle_reset
-          build peripheral  lily58_left_reset
-          build peripheral2 lily58_right_reset
+          build central    lily58_left_reset
+          build peripheral lily58_right_reset
           git checkout keyboard.toml
+
+      - name: Build dongle
+        working-directory: dongle
+        run: |
+          set -e
+          build() {  # $1 = extra cargo args, $2 = output name
+            cargo objcopy --release --bin dongle $1 -- -O ihex "$2.hex"
+            cargo hex-to-uf2 --input-path "$2.hex" --output-path "../out/$2.uf2" --family nrf52840
+          }
+          build ""                 lily58_dongle
+          build "--features reset" lily58_dongle_reset
 
       - name: Upload firmware
         uses: actions/upload-artifact@v4
