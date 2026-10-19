@@ -1,0 +1,83 @@
+[package]
+name = "lily58-dongle"
+version = "0.1.0"
+edition = "2024"
+description = "USB dongle for the Lily58 Pro Wireless: relays the keyboard to the PC and drives the OLED"
+
+[[bin]]
+name = "dongle"
+path = "src/main.rs"
+test = false
+bench = false
+
+[features]
+# Builds the dongle_reset.uf2 variant: forgets the paired keyboard on every boot
+reset = []
+
+[dependencies]
+# Same RMK rev as the keyboard (../Cargo.toml): both ends must speak the same protocol.
+# `vial` relays Vial to the left half; `split` lets the dongle decode the right
+# half's battery level; `sh1106` drives the OLED.
+rmk = { git = "https://github.com/rmk-rs/rmk", rev = "535cd7191338bd6fec656dfd4a4b36c1f159736d", default-features = false, features = [
+    "defmt",
+    "storage",
+    "vial",
+    "dongle",
+    "split",
+    "nrf52840_ble",
+    "adafruit_bl",
+    "sh1106",
+] }
+
+embedded-graphics = "0.8"
+heapless = "0.9"
+
+embassy-executor = { version = "0.10", features = [
+    "defmt",
+    "platform-cortex-m",
+    "executor-thread",
+] }
+embassy-nrf = { version = "0.11", features = [
+    "defmt",
+    "nrf52840",
+    "time-driver-rtc1",
+    "gpiote",
+    "unstable-pac",
+    "nfc-pins-as-gpio",
+    "time",
+] }
+embassy-time = { version = "0.5", features = ["tick-hz-32_768", "defmt", "defmt-timestamp-uptime"] }
+nrf-mpsl = { version = "0.4.0", features = [
+    "defmt",
+    "critical-section-impl",
+    "nrf52840",
+] }
+nrf-sdc = { version = "0.4.0", features = [
+    "defmt",
+    "peripheral",
+    "central",
+    "nrf52840",
+] }
+bt-hci = { version = "0.10", features = ["defmt"] }
+
+cortex-m = "0.7.7"
+cortex-m-rt = "0.7.5"
+defmt = "1"
+defmt-rtt = "1"
+panic-probe = { version = "1", features = ["print-defmt"] }
+static_cell = "2"
+
+[profile.dev]
+codegen-units = 1
+debug = true
+opt-level = 1
+overflow-checks = true
+lto = false
+panic = "unwind"
+
+[profile.release]
+codegen-units = 1
+debug = true          # no size cost on bare metal
+opt-level = "z"       # optimize for size
+overflow-checks = false
+lto = "fat"
