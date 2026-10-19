@@ -1,6 +1,9 @@
-# Lily58 Pro (56 keys: the inner key under each nice!nano is not used)
-# Dongle (nice!nano #3 + 1.3" SH1106 OLED) = split central, runs the keymap and Vial
-# Left / right halves (nice!nano) = peripherals, talk to the dongle over BLE
+# Lily58 Pro Wireless - TRI-MODE
+# Left half  = split central: runs the keymap and Vial. Talks to the PC over
+#              the dongle, over Bluetooth directly, or over USB (cable in the left half).
+# Right half = split peripheral, talks to the left half over BLE.
+# Dongle     = USB receiver + OLED; its firmware lives in dongle/ (not this file).
+# 56 keys: the inner key under each nice!nano is not used.
 
 [keyboard]
 name = "Lily58 Pro Wireless"
@@ -8,8 +11,6 @@ product_name = "Lily58 Pro Wireless"
 vendor_id = 0x4c4b
 product_id = 0x4643
 manufacturer = "Ricardilicious"
-# Not `board = "nice!nano_v2"`: that default enables a battery ADC on every board,
-# but the dongle has no battery. Each half sets its own battery_adc_pin below.
 chip = "nrf52840"
 usb_enable = true
 
@@ -19,9 +20,11 @@ dcdc_reg0 = true
 dcdc_reg1 = true
 
 [rmk]
-# After 10 minutes without a key press the dongle tells the halves to use slow
-# connection intervals (saves their batteries) and blanks the OLED. Any key wakes it.
+# Sleep after 10 minutes without a key press (saves the left half's battery).
+# Any key wakes it.
 split_central_sleep_timeout_seconds = 600
+# Bluetooth host slots (BT1-BT3). The dongle has its own extra slot.
+ble_profiles_num = 3
 
 # Unified matrix: 5 rows x 12 cols. Left half = cols 0-5, right half = cols 6-11.
 # Right half col 6 is the INNER column. (4,0), (4,5), (4,6), (4,11) have no switch.
@@ -70,20 +73,20 @@ _      _    _    _    _    _          WM(Equal,LShift)  Minus  Equal  LeftBracke
             _    _    _    _          _                 _      _      _
 """
 
-# Adjust:
-#   both top corners      -> DONGLE into bootloader (UF2 drive appears)
-#   key below each corner -> reboot the dongle
-#   left end of 3rd row   -> hold 5 s to forget the paired halves (re-pair them)
-# Halves into bootloader: hold their top OUTER corner key while switching them on
-# (see `bootmagic` below) - no need to open the case.
+# Adjust (hold Lower + Raise):
+#   top row, left half:  Bootloader (LEFT half), BT1, BT2, BT3, DONGLE, USB/BLE
+#   2nd row:             Reboot (left half)
+#   3rd row, left half:  clear current BT slot, hold 5 s = forget right half (re-pair)
+# Hold a BT key or DONGLE for 5 s to forget that pairing and pair again.
+# Right half into bootloader: hold its top-right key while switching it on.
 [[keymap.layer]]
 name = "adjust"
 keys = """
-Bootloader  _  _  _  _  _        _  _  _  _  _  Bootloader
-Reboot      _  _  _  _  _        _  _  _  _  _  Reboot
-User7       _  _  _  _  _        _  _  _  _  _  _
-_           _  _  _  _  _        _  _  _  _  _  _
-               _  _  _  _        _  _  _  _
+Bootloader  User0  User1  User2  User8  User6        _  _  _  _  _  _
+Reboot      _      _      _      _      _            _  _  _  _  _  _
+User5       User7  _      _      _      _            _  _  _  _  _  _
+_           _      _      _      _      _            _  _  _  _  _  _
+                   _      _      _      _            _  _  _  _
 """
 
 [behavior.tri_layer]
@@ -108,42 +111,18 @@ clear_storage = false
 [split]
 connection = "ble"
 
-# --- Dongle: no keys, just the OLED ---
+# --- Left half: split central (runs the keymap) ---
 [split.central]
-rows = 0
-cols = 0
-row_offset = 0
-col_offset = 0
-[split.central.matrix]
-matrix_type = "normal"
-row_pins = []
-col_pins = []
-
-# 1.3" 128x64 SH1106, same wiring as the ZMK build:
-# GND->GND, VCC->VCC, SDA->D2 (P0.17), SCL->D3 (P0.20)
-[split.central.display]
-driver = "sh1106"
-size = "128x64"
-rotation = 0
-renderer = "crate::renderer::DongleRenderer"
-min_render_interval = 50
-# Redraw at least every 0.5 s so the startup screen goes away on its own
-render_interval = 500
-[split.central.display.protocol.i2c]
-instance = "TWISPI0"
-sda = "P0_17"
-scl = "P0_20"
-address = 0x3C
-
-# --- Left half (peripheral id 0) ---
-[[split.peripheral]]
 rows = 5
 cols = 6
 row_offset = 0
 col_offset = 0
+
+[split.central.battery]
 battery_adc_pin = "vddh"
 battery_user_description = "Left"
-[split.peripheral.matrix]
+
+[split.central.matrix]
 matrix_type = "normal"
 # pro_micro pins 5,6,7,8,9
 row_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
@@ -152,14 +131,17 @@ col_pins = ["P0_02", "P1_15", "P1_13", "P1_11", "P0_10", "P0_09"]
 # Hold Esc (top-left) while powering on -> bootloader
 bootmagic = [0, 0]
 
-# --- Right half (peripheral id 1) ---
+# --- Right half: split peripheral (id 0) ---
 [[split.peripheral]]
 rows = 5
 cols = 6
 row_offset = 0
 col_offset = 6
+
+[split.peripheral.battery]
 battery_adc_pin = "vddh"
 battery_user_description = "Right"
+
 [split.peripheral.matrix]
 matrix_type = "normal"
 row_pins = ["P0_24", "P1_00", "P0_11", "P1_04", "P1_06"]
