@@ -1,0 +1,7 @@
+# Compile-time constants for the dongle firmware. The keymap and everything
+# else live in ../keyboard.toml on the left half; the dongle only relays.
+[rmk]
+# The right half: lets the dongle show its battery level
+split_peripherals_num = 1
+# Seconds the dongle looks for a new keyboard after power-on (when not paired)
+dongle_pairing_window_secs = 30
