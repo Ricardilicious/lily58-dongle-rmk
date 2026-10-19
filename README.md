@@ -24,11 +24,11 @@ For each board: plug it in, double-tap reset so the `NICENANO` drive appears, th
 2. Right half: `lily58_right_reset.uf2`, then `lily58_right.uf2`.
 3. Dongle: `lily58_dongle_reset.uf2`, then `lily58_dongle.uf2`.
 4. Switch both halves on. They find each other by themselves.
-5. Pair the dongle: plug it into the PC, then press **Adjust + DONGLE** (hold Lower + Raise, then the 5th key of the top row). The OLED switches from SEARCHING to the layer screen.
+5. Pair the dongle: plug it into the PC, then press **Adjust + DONGLE** (hold both layer keys, then the 5th key of the top row). The OLED switches from SEARCHING to the layer screen.
 
 ## Switching between dongle, Bluetooth and USB
 
-Hold **Lower + Raise** (Adjust), then use the top row of the left half:
+Hold **both layer keys** (Adjust: the 2nd left thumb key + the 3rd right thumb key), then use the top row of the left half:
 
 | Key | Does |
 | --- | --- |
@@ -44,8 +44,8 @@ To pair a phone or laptop: press a BT key, then pick **Lily58 Pro** in that devi
 
 | Board | How |
 | --- | --- |
-| Left half | Adjust + top-left key, or hold **Esc** while switching it on |
-| Right half | Hold **`** (top-right) while switching it on or plugging in USB |
+| Left half | Adjust + top-left key, or hold the **top-left key** (`` ` ``) while switching it on |
+| Right half | Hold the **top-right key** (=) while switching it on or plugging in USB |
 | Dongle | Double-tap its reset button |
 
 ## Other Adjust keys
