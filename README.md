@@ -38,7 +38,7 @@ Hold **Lower + Raise** (Adjust), then use the top row of the left half:
 | 5th key (DONGLE) | use the dongle — hold 5 s to pair a different dongle |
 | 6th key (USB/BLE) | toggle wired USB vs wireless while a cable is plugged into the left half |
 
-To pair a phone or laptop: press a BT key, then pick **Lily58 Pro Wireless** in that device's Bluetooth settings.
+To pair a phone or laptop: press a BT key, then pick **Lily58 Pro** in that device's Bluetooth settings.
 
 ## Bootloader without opening the case
 
