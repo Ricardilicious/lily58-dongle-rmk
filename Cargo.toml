@@ -2,39 +2,32 @@
 name = "lily58-dongle-rmk"
 version = "0.1.0"
 edition = "2024"
-description = "RMK firmware for a Lily58 Pro (56 keys) with a nice!nano dongle as split central"
+description = "RMK tri-mode firmware for a Lily58 Pro (56 keys): dongle, Bluetooth and USB"
 
-# Three firmwares, one per nice!nano
+# The two halves. The dongle firmware is a separate crate in dongle/.
 [[bin]]
-name = "central"     # the dongle (USB to PC, SH1106 OLED, runs the keymap + Vial)
+name = "central"     # left half (runs the keymap + Vial; dongle, Bluetooth or USB to the PC)
 path = "src/central.rs"
 test = false
 bench = false
 
 [[bin]]
-name = "peripheral"  # left half
+name = "peripheral"  # right half
 path = "src/peripheral.rs"
 test = false
 bench = false
 
-[[bin]]
-name = "peripheral2" # right half
-path = "src/peripheral2.rs"
-test = false
-bench = false
-
 [dependencies]
-# Default features already include: defmt, storage, vial, host_lock, watchdog
-rmk = { version = "0.9", features = [
+# Default features already include: defmt, storage, vial, host_lock, watchdog.
+# Pinned to a recent RMK commit: tri-mode dongle support is newer than RMK 0.9.0.
+# The dongle crate (dongle/Cargo.toml) must use the same rev.
+rmk = { git = "https://github.com/rmk-rs/rmk", rev = "535cd7191338bd6fec656dfd4a4b36c1f159736d", features = [
     "nrf52840_ble",
     "split",
+    "dongle",
     "async_matrix",
     "adafruit_bl",
-    "sh1106",
 ] }
-
-embedded-graphics = "0.8"
-heapless = "0.9"
 
 embassy-executor = { version = "0.10", features = [
     "defmt",
