@@ -1,4 +1,4 @@
-//! Left half firmware (first `[[split.peripheral]]` in keyboard.toml).
+//! Right half firmware: split peripheral (the `[[split.peripheral]]` in keyboard.toml).
 #![no_main]
 #![no_std]
 
