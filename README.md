@@ -5,6 +5,14 @@
 - **Dongle** (3rd nice!nano + 1.3" SH1106 OLED) = USB receiver plus status screen. It has no keymap of its own.
 - 56 keys (the inner key under each nice!nano isn't used).
 
+## Keymap
+
+![Lily58 Pro Wireless keymap](keymap.svg)
+
+This is the default keymap built into the firmware (from [`keyboard.toml`](keyboard.toml)). Changes you make in Vial aren't shown.
+
+## Firmware
+
 The firmware is built by GitHub Actions. Open the **Actions** tab, open the latest run on this branch, and download the `firmware` artifact.
 
 | File | Flash to |
