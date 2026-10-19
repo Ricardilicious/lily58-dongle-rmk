@@ -7,7 +7,9 @@
 
 [keyboard]
 name = "Lily58 Pro Wireless"
-product_name = "Lily58 Pro Wireless"
+# Bluetooth names fit at most 16 characters. The dongle shows up over USB as
+# "Lily58 Pro Wireless" (set in dongle/src/main.rs).
+product_name = "Lily58 Pro"
 vendor_id = 0x4c4b
 product_id = 0x4643
 manufacturer = "Ricardilicious"
