@@ -34,7 +34,7 @@ const W: i32 = 128;
 /// How long the startup screen stays up after the dongle is plugged in
 const SPLASH_TIME: Duration = Duration::from_secs(3);
 
-const LAYER_NAMES: [&str; 4] = ["BASE", "LOWER", "RAISE", "ADJUST"];
+const LAYER_NAMES: [&str; 4] = ["BASE", "NUMBERS", "NAV", "ADJUST"];
 
 #[derive(Default)]
 pub struct DongleRenderer {
